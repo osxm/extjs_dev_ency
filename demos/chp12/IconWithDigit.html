@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>ExtJS Single Page Sample</title>
+	<script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+	<link href="../../build/development/ExtjsdevEncy/classic/resources/ExtjsdevEncy-all.css" rel="stylesheet"
+		type="text/css" />
+	<style>
+		.xm-btn-withchart .x-css-shadow{
+			box-shadow: none!important;
+		}
+	</style>
+	<script>
+	//类型定义
+	</script>
+
+	<script>
+		//执行脚本
+		Ext.onReady(function () {
+			var shoppingCartBtn = Ext.create({
+					xtype: 'button',
+					scale: 'large',
+					cls:'xm-btn-withchart',
+					iconCls: 'x-fa fa-shopping-cart'
+			});
+			Ext.create('Ext.panel.Panel', {
+				title: 'Hello Title',
+				html: 'Hello Body',
+				renderTo: 'div1',
+				tbar: [shoppingCartBtn]
+			});
+			Ext.create('Ext.draw.Container', {
+				renderTo: shoppingCartBtn.getEl(),
+				width: 20,
+				height: 20,
+				floating: true,
+				bodyStyle: {
+					background: 'transparent'
+				},
+				sprites: [{
+					type: 'text',
+					text: '6',
+					fontSize: 16,
+					x: 6,
+					y: 15,
+					fillStyle: '#FF0000'
+				}]
+			});
+
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+</body>
+
+</html>

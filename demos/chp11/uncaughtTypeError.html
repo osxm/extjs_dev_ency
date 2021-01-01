@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>ExtJS Single Page Sample</title>
+	<script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+	<link href="../../build/development/ExtjsdevEncy/classic/resources/ExtjsdevEncy-all.css" rel="stylesheet"
+		type="text/css" />
+	<script>
+		//类型/函数 定义
+
+	</script>
+
+	<script>
+		//执行脚本
+		Ext.onReady(function () {
+			Ext.create('Ext.panel.Panel', {
+				title: '错误演示',
+				html: 'Hello',
+				renderTo: 'div1',
+				bbar: [{
+					text: '打开新窗口',
+					handler: function () {
+						Ext.create('Ext.window.Window', {
+							height: 500,
+							width: 400,
+							modal: true,
+							items: {
+								xtype: 'form',
+								id: 'myForm',
+								margin: 10,
+								items: [{
+									xtype: 'textfield',
+									fieldLabel: '请输入'
+								}],
+								bbar: [{
+									text: '点击出现遮罩',
+									handler: function () {
+										alert("11");
+										var maskId = 'myFormMask';
+										var mask = null;
+										if (Ext.getCmp(maskId) != null) {
+											mask = Ext.getCmp(maskId);
+										} else {
+											mask = new Ext.LoadMask({
+												msg: 'Please wait...',
+												id: maskId,
+												target: Ext.getCmp('myForm')
+											});
+										}
+										mask.show();
+									}
+								}]
+							}
+						}).show();
+					}
+				}]
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+
+
+</body>
+
+</html>

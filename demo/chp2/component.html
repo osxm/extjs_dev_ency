@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>组件定义 Demo</title>
+    <script type="text/javascript" src="../ext-all-debug.js"></script>
+    <link href="../theme-neptune-all-debug.scss" rel="stylesheet"
+        type="text/css" />
+    <script>
+        //类型定义
+        Ext.define('MyApp.Image', {
+            extend: 'Ext.Component',
+            alias: 'widge.myImage',
+            //xtype:'myImage'
+            autoEl: {
+                tag: 'img',
+                src: Ext.BLANK_IMAGE_URL,
+                cls: 'my-image'
+            },
+            onRender: function () { //渲染阶段客制化处理
+                this.autoEl = Ext.apply({}, this.initialConfig, this.autoEl);
+                this.callParent(arguments);
+                this.el.on('load', this.onLoad, this); //添加load事件
+            },
+            onLoad: function () {
+                this.fireEvent('load', this);
+            }, setSrc: function (src) {
+                if (this.rendered) {
+                    this.el.dom.src = src;
+                } else {
+                    this.src = src;
+                }
+            }, getSrc: function () {
+                return this.el.dom.src || this.src;
+            }
+        });
+
+
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+            var image = Ext.create('MyApp.Image');
+            Ext.create('Ext.panel.Panel', {
+                title: 'Image Panel',
+                height: 800,
+                renderTo: Ext.getBody(),
+                items: [image]
+            });
+            image.on('load', function () {
+                console.log('image loaded: ', image.getSrc());
+            });
+            image.setSrc('https://dss1.bdstatic.com/5aAHeD3nKgcUp2HgoI7O1ygwehsv/media/ch1/jpg/%E8%AF%BB%E4%B9%A6%E6%97%A5BG.jpg');
+            //image.setSrc('../resources/images/readingBG.jpg');
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+{
+    "expanded": true,
+    "children": [
+        {
+            "text": "蜀国",
+            "expanded": true,
+            "children": [
+                {
+                    "text": "刘备",
+                    "leaf": true
+                },
+                {
+                    "text": "关羽",
+                    "leaf": true
+                },
+                {
+                    "text": "张飞",
+                    "leaf": true
+                }
+            ]
+        }
+    ]
+}
