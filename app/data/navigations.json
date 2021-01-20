@@ -12,9 +12,30 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "treedemo",
                     "leaf": true
+                },
+                {
+                    "text": "窗口的使用",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "windowdemo",
+                    "leaf": true
                 }
             ]
-        },         {
+        },
+        {
+            "text": "第5章 高级页面组件",
+            "iconCls": "x-fa fa-list-ul",
+            "expanded": false,
+            "selectable": false,
+            "children": [
+                {
+                    "text": "富文本编辑器",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "froalaeditordemo",
+                    "leaf": true
+                }
+            ]
+        },
+        {
             "text": "第7章 进阶专题",
             "iconCls": "x-fa fa-list-ul",
             "expanded": false,
@@ -24,11 +45,12 @@
                     "text": "内嵌HTML",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "iframepanel7-1",
-                    "url":"demos/chp07/innerHtml.html",
+                    "url": "demos/chp07/innerHtml.html",
                     "leaf": true
                 }
             ]
-        }, {
+        },
+        {
             "text": "第11章 常见错误及解决",
             "iconCls": "x-fa fa-list-ul",
             "expanded": false,
@@ -38,20 +60,20 @@
                     "text": "Uncaught TypeError",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "iframepanel11-1",
-                    "url":"demos/chp11/uncaughtTypeError.html",
+                    "url": "demos/chp11/uncaughtTypeError.html",
                     "leaf": true
                 },
                 {
                     "text": "template",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "iframepanel11-2",
-                    "url":"demos/temp/template.html",
+                    "url": "demos/temp/template.html",
                     "leaf": true
                 }
             ]
         },
         {
-            "text": "Chapter 12",
+            "text": "第12章 组件扩展",
             "iconCls": "x-fa fa-list-ul",
             "expanded": false,
             "selectable": false,
@@ -84,6 +106,12 @@
                     "text": "带有编辑列的Grid",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "editwidgetcolgrid",
+                    "leaf": true
+                },
+                {
+                    "text": "分组按钮",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "groupbtnstoolbar",
                     "leaf": true
                 }
             ]

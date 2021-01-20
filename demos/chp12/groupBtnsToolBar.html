@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Locked Grid</title>
+<link rel="stylesheet" type="text/css"
+	href="../build/development/Nplm/classic/resources/Nplm-all.css" />
+<script type="text/javascript" src="../ext/build/ext-all-debug.js"></script>
+<script type="text/javascript">
+	var maxLevel1BtnLength = 8;
+	function getBtnCfg(actionCfg){
+		return {
+			text : actionCfg.text,
+			iconCls : actionCfg.iconCls,
+			handler : actionCfg.action,
+			assignKey : actionCfg.assignKey,
+			pegaAction : actionCfg.pegaAction,
+			name : actionCfg.name,
+			cls : actionCfg.cls
+		};
+	}
+	
+	function getGrpBtnCfg(btnText){
+		return {xtype:'splitbutton',text:btnText,menu:[]};
+	}
+	/**
+	* More Can have three level
+	*/
+	function groupButton(buttons) {
+		var maxLevel1Length = 6; //第一级按钮的最大数量
+		var btnCfgs = [];
+		var moreBtnCfg = getGrpBtnCfg('More'); // 超过最大数量的放入
+		if(buttons==null||buttons.length<1){
+			return btnCfg;
+		}
+		//sort buttons array by sortId
+		buttons.sort(function(a, b) {
+			var iRtn = 0;
+			if(a.sortId!=null){
+				if(b.sortId!=null){
+					iRtn = a.sortId>b.sortId?1:-1;
+				}else{
+					iRtn = 1;
+				}
+			}else{
+				if(b.sortId!=null){
+					iRtn = -1;
+				}
+			}
+		    return iRtn;
+		});
+		
+		var lastLevel1Id = null;
+		var lastLevel1BtnCfg = null;
+		var level1Length=0;
+		var putLevel2Switch=false;
+		var moreGrpLevel3Switch=false;
+		for(var i in buttons){
+			var sortId = buttons[i].sortId;
+			if(sortId!=null&&sortId.length>0){
+				if(sortId.indexOf('_')>0||sortId.indexOf('-')>0){//second level btn
+					var sortIdArray = [];
+					if(sortId.indexOf('_')>0){
+						sortIdArray = sortId.split('_');
+					}else if(sortId.indexOf('-')>0) {
+						sortIdArray = sortId.split('-');
+					}
+					var btnCfg = getBtnCfg(buttons[i]);
+					if(sortIdArray>1){
+						var level1Id = sortIdArray[0];
+						var level2Id = sortIdArray[1];						
+					}	
+					if(level1Length>=maxLevel1Length){
+						if(moreGrpLevel3Switch){
+							moreBtnCfg.menu[moreBtnCfg.menu.length-1].menu.push(btnCfg);
+						}else{
+							moreGrpLevel3Switch = true;
+							moreBtnCfg.menu[moreBtnCfg.menu.length-1].xtype='splitbutton';
+							moreBtnCfg.menu[moreBtnCfg.menu.length-1].menu=[];
+							moreBtnCfg.menu[moreBtnCfg.menu.length-1].menu.push(btnCfg);
+						}
+					}else{
+						if(putLevel2Switch){
+							btnCfgs[btnCfgs.length-1].menu.push(btnCfg);
+						}else{
+							putLevel2Switch = true;
+							btnCfgs[btnCfgs.length-1].xtype='splitbutton';
+							btnCfgs[btnCfgs.length-1].menu = [];
+							btnCfgs[btnCfgs.length-1].menu.push(btnCfg);
+						}	
+					}			
+					lastLevel1Id = sortIdArray[0];	
+				}else{ //first level
+					putLevel2Switch = false;
+					var btnCfg = getBtnCfg(buttons[i]);
+					if(level1Length>=maxLevel1Length){
+						moreBtnCfg.menu.push(btnCfg);
+					}else{
+						btnCfgs.push(btnCfg);
+						level1Length += 1;
+					}										
+					lastLevel1Id = sortId;
+					lastLevel1BtnCfg = btnCfg;
+				}
+			}else{ // not set  sortId, first level
+				putLevel2Switch = false;
+				var btnCfg = getBtnCfg(buttons[i]);
+				if(level1Length>=maxLevel1Length){
+					moreBtnCfg.menu.push(btnCfg);
+				}else{
+					btnCfgs.push(btnCfg);
+					level1Length += 1;
+				}			
+				lastLevel1Id = sortId;
+				lastLevel1BtnCfg = btnCfg;
+			}
+		}
+		if(moreBtnCfg.menu.length>0){
+			btnCfgs.push(moreBtnCfg);
+		}		
+		return btnCfgs;		
+	}
+
+	var buttons = [ {
+		"name" : "query",
+		"text" : "Button1",
+		"action" : "queryItems",
+		"pegaAction" : null,
+		"assignKey" : null,
+		"iconCls" : "x-fa fa-search",
+		"cls" : null,
+		"sortId" : "001"
+	}, {
+		"name" : "create",
+		"text" : "Button3",
+		"action" : "prepareCreateItem",
+		"pegaAction" : null,
+		"assignKey" : null,
+		"iconCls" : "x-fa fa-plus",
+		"cls" : null,
+		"sortId" : "003"
+	}, {
+		"name" : "addFilter",
+		"text" : "Button2",
+		"action" : "addFilter",
+		"pegaAction" : null,
+		"assignKey" : null,
+		"iconCls" : "x-fa fa-filter",
+		"cls" : null,
+		"sortId" : "002"
+	}, {
+		"name" : "addFilter",
+		"text" : "Button2-2",
+		"action" : "addFilter",
+		"pegaAction" : null,
+		"assignKey" : null,
+		"iconCls" : "x-fa fa-filter",
+		"cls" : null,
+		"sortId" : "002_002"
+	}, {
+		"name" : "addFilter",
+		"text" : "Button2-1",
+		"action" : "addFilter",
+		"pegaAction" : null,
+		"assignKey" : null,
+		"iconCls" : "x-fa fa-filter",
+		"cls" : null,
+		"sortId" : "002_001"
+	}, {
+		"name" : "create",
+		"text" : "Button4",
+		"action" : "prepareCreateItem",
+		"pegaAction" : null,
+		"assignKey" : null,
+		"iconCls" : "x-fa fa-plus",
+		"cls" : null,
+		"sortId" : "004"
+	}, {
+		"name" : "create",
+		"text" : "Button5",
+		"action" : "prepareCreateItem",
+		"pegaAction" : null,
+		"assignKey" : null,
+		"iconCls" : "x-fa fa-plus",
+		"cls" : null,
+		"sortId" : "005"
+	}, {
+		"name" : "create",
+		"text" : "Button6",
+		"action" : "prepareCreateItem",
+		"pegaAction" : null,
+		"assignKey" : null,
+		"iconCls" : "x-fa fa-plus",
+		"cls" : null,
+		"sortId" : "006"
+	}, {
+		"name" : "create",
+		"text" : "Button7",
+		"action" : "prepareCreateItem",
+		"pegaAction" : null,
+		"assignKey" : null,
+		"iconCls" : "x-fa fa-plus",
+		"cls" : null,
+		"sortId" : "007"
+	}, {
+		"name" : "create",
+		"text" : "Button8",
+		"action" : "prepareCreateItem",
+		"pegaAction" : null,
+		"assignKey" : null,
+		"iconCls" : "x-fa fa-plus",
+		"cls" : null,
+		"sortId" : "008"
+	}, {
+		"name" : "create",
+		"text" : "Button9",
+		"action" : "prepareCreateItem",
+		"pegaAction" : null,
+		"assignKey" : null,
+		"iconCls" : "x-fa fa-plus",
+		"cls" : null,
+		"sortId" : "009"
+	}, {
+		"name" : "create",
+		"text" : "Button9-1",
+		"action" : "prepareCreateItem",
+		"pegaAction" : null,
+		"assignKey" : null,
+		"iconCls" : "x-fa fa-plus",
+		"cls" : null,
+		"sortId" : "009_001"
+	} , {
+		"name" : "create",
+		"text" : "Button10",
+		"action" : "prepareCreateItem",
+		"pegaAction" : null,
+		"assignKey" : null,
+		"iconCls" : "x-fa fa-plus",
+		"cls" : null,
+		"sortId" : "010"
+	} ];
+
+	/*buttons = [ {
+		"name" : "create",
+		"text" : "Button8",
+		"action" : "prepareCreateItem",
+		"pegaAction" : null,
+		"assignKey" : null,
+		"iconCls" : "x-fa fa-plus",
+		"cls" : null,
+		"sortId" : "008"
+	}, {
+		"name" : "create",
+		"text" : "Button9-1",
+		"action" : "prepareCreateItem",
+		"pegaAction" : null,
+		"assignKey" : null,
+		"iconCls" : "x-fa fa-plus",
+		"cls" : null,
+		"sortId" : "009_001"
+	}];*/
+	
+	Ext.onReady(function() {
+		//alert("002_001">"003");
+		
+		var btnCfg = groupButton(buttons);
+		Ext.create('Ext.grid.Panel', {
+			tbar : btnCfg,
+			renderTo : Ext.getBody()
+		});
+	});
+</script>
+</head>
+<body>
+
+
+</body>
+</html>
