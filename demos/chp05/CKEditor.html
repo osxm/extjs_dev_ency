@@ -9,19 +9,45 @@
 
 
 <body>
-    <div id="editor">
+    <!--<div id="editor">
         <p>Here goes the initial content of the editor.</p>
-    </div>
+    </div>-->
+
+    <textarea name="content" id="editor"></textarea>
 
     <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'))
+        var editor = ClassicEditor
+            .create(document.querySelector('#editor'), {
+                language: "zh-cn",
+                ckfinder: {
+                    uploadUrl: "http://localhost:8080/ckeditor/uploadimage"
+
+                }
+            })
             .then(editor => {
                 console.log(editor);
+                console.log(Array.from(editor.ui.componentFactory.names()));
+                editor.ui.componentFactory.add('insertImage', locale => {
+                    const view = new ButtonView(locale);
+
+                    view.set({
+                        label: 'Insert image',
+                        icon: imageIcon,
+                        tooltip: true
+                    });
+
+                    // Callback executed once the image is clicked.
+                    view.on('execute', () => {
+                        const imageURL = prompt('Image URL');
+                    });
+
+                    return view;
+                });
             })
             .catch(error => {
                 console.error(error);
             });
+
     </script>
 </body>
 

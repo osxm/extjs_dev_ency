@@ -30,7 +30,7 @@
                 {
                     "text": "富文本编辑器",
                     "iconCls": "x-fa fa-wifi",
-                    "viewType": "froalaeditordemo",
+                    "viewType": "ckeditordemo",
                     "leaf": true
                 }
             ]
@@ -46,6 +46,12 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "iframepanel7-1",
                     "url": "demos/chp07/innerHtml.html",
+                    "leaf": true
+                },
+                {
+                    "text": "带选择列的Grid",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "gridselectdemo",
                     "leaf": true
                 }
             ]
@@ -112,6 +118,12 @@
                     "text": "分组按钮",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "groupbtnstoolbar",
+                    "leaf": true
+                },
+                {
+                    "text": "CKEditor富文本编辑器",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "ckeditordemo",
                     "leaf": true
                 }
             ]

@@ -10,33 +10,34 @@
         type="text/css" />
     <script>
         //类型定义
-       /* Ext.define('ExtjsdevEncy.view.common.CKEditor', {
-            extend: 'Ext.form.field.TextArea',
-            xtype: 'CKEditor',
-            editor: null,
-            initComponent: function () {         
-                this.html = "<div id='" + this.getId() + "' name='" + this.name + "'></div>";
-                this.callParent(arguments);
-            }           
-        });*/
+        /* Ext.define('ExtjsdevEncy.view.common.CKEditor', {
+             extend: 'Ext.form.field.TextArea',
+             xtype: 'CKEditor',
+             editor: null,
+             initComponent: function () {         
+                 this.html = "<div id='" + this.getId() + "' name='" + this.name + "'></div>";
+                 this.callParent(arguments);
+             }           
+         });*/
         Ext.define('ExtjsdevEncy.view.common.CKEditor', {
             extend: 'Ext.Component',
             xtype: 'CKEditor',
             editor: null,
-            listeners:{
-                afterRender:function(){
-                    //alert(this.getEl());
-                    ClassicEditor.create(document.querySelector('#'+this.getId()))
+            getValue:function(){
+              return this.editor.getData() ;
+            },
+            listeners: {
+                afterRender: function () {
+                    var me = this;
+                    ClassicEditor.create(document.querySelector('#' + this.getId())).then(newEditor => {
+                        me.editor = newEditor;
+                    });
                 }
             },
-            initComponent: function () {         
+            initComponent: function () {
                 this.html = "<div style='height:500px' id='" + this.getId() + "'>11</div>";
                 this.callParent(arguments);
-                //alert(document.querySelector('#'+this.getId()));
-                //ClassicEditor.create(document.querySelector('#'+this.getId()))
-                //alert(this.getEl());
-                //ClassicEditor.create(this.getEl())
-            }       
+            }
         });
     </script>
 
@@ -44,10 +45,19 @@
         //执行脚本
         Ext.onReady(function () {
             Ext.create('Ext.panel.Panel', {
-                items:[{
-                    xtype:'CKEditor'
+                items: [{
+                    xtype: 'CKEditor',
+                    itemId:'ckeditor'
                 }],
-                renderTo:'div1'
+                renderTo: 'div1',
+                tbar:[{
+                    text:'获取编辑器值',
+                    handler:function(thisBtn){
+                       var panel =  thisBtn.findParentByType('panel');
+                       var ckeditor = panel.getComponent('ckeditor');
+                       alert(ckeditor.getValue());
+                    }
+                }]
             });
         });
     </script>
