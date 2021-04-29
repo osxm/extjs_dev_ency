@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Radio Group Demo</title>
+	<script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+	<link href="../../build/development/ExtjsdevEncy/classic/resources/ExtjsdevEncy-all.css" rel="stylesheet"
+		type="text/css" />
+	<script>
+	//类型定义
+	</script>
+
+	<script>
+		//执行脚本
+		Ext.onReady(function () {
+			Ext.create('Ext.form.Panel', {
+				defaults: {
+					labelStyle: 'font-weight:bold'
+				},
+
+				items: [{
+					xtype: 'radiogroup',
+					name:'sectionSubject',
+					fieldLabel: '小学 |',
+					items: [{
+						boxLabel: '数学',
+						name: 'subject',
+						inputValue: 'primary_math'
+					}, {
+						boxLabel: '语文',
+						name: 'subject',
+						inputValue: 'primary_chinese'
+					}]
+				}, {
+					xtype: 'radiogroup',
+					name:'sectionSubject',
+					fieldLabel: '初中',
+					items: [{
+						boxLabel: '数学',
+						name: 'subject',
+						inputValue: 'middle_math'
+					}, {
+						boxLabel: '语文',
+						name: 'subject',
+						inputValue: 'middle_chinese'
+					}]
+				}],
+				tbar: [{
+					text: 'Get Value',
+					handler: function (thisBtn) {
+						var form = thisBtn.findParentByType('form');
+						alert(Ext.encode(form.getValues()));
+					}
+				}, {
+					text: 'Set Value',
+					handler: function (thisBtn) {
+						var form = thisBtn.findParentByType('form');
+						form.getComponent('myradiogroup').setValue({ subject: 'primary_chinese' });
+					}
+				}],
+				renderTo: Ext.getBody()
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+</body>
+
+</html>

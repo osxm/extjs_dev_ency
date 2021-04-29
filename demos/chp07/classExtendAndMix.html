@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>ExtJS Single Page Sample</title>
+	<script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+	<link href="../ext/ExtjsdevEncy-all.css" rel="stylesheet"
+		type="text/css" />
+	<script>
+	//类型定义
+	</script>
+
+	<script>
+		//执行脚本
+		Ext.onReady(function () {
+            Ext.define('Animal', {
+                eat: function() {
+                    alert("需要吃饭...")
+                }
+            });
+            Ext.define('Human', {
+                extend: 'Animal', 
+                walk: function() {
+                    alert("直立行走...")
+                }
+            });
+            var human = new Human();
+            human.eat();
+            human.walk();
+
+        
+            Ext.define('Tiger', {
+                fighting: function() {
+                    alert("擅长搏斗...")
+                }
+            });
+
+            Ext.define('Lion', {
+                mixins: ['Tiger'],
+
+                run: function() {
+                    alert("擅长奔跑...")
+                }
+            });
+
+            var liger = new Lion();
+            liger.fighting();
+            liger.run();
+
+
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+
+</body>
+
+</html>

@@ -53,6 +53,12 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "gridselectdemo",
                     "leaf": true
+                },
+                {
+                    "text": "键盘事件",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "keyboarddemo",
+                    "leaf": true
                 }
             ]
         },
@@ -124,6 +130,12 @@
                     "text": "CKEditor富文本编辑器",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "ckeditordemo",
+                    "leaf": true
+                },
+                {
+                    "text": "带触发器按钮的输入框",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "selectfielddemo",
                     "leaf": true
                 }
             ]
