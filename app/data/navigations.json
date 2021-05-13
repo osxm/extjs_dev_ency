@@ -28,9 +28,9 @@
             "selectable": false,
             "children": [
                 {
-                    "text": "富文本编辑器",
+                    "text": "内嵌Grid",
                     "iconCls": "x-fa fa-wifi",
-                    "viewType": "ckeditordemo",
+                    "viewType": "nestgriddemo",
                     "leaf": true
                 }
             ]

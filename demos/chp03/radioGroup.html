@@ -26,12 +26,23 @@
 					items: [{
 						boxLabel: '数学',
 						name: 'subject',
-						inputValue: 'primary_math'
+						inputValue: 'primary_math',
+						listeners : {
+							change : function( thisRadio, newValue, oldValue, eOpts ) {
+								alert(newValue);
+							}
+						}	
 					}, {
 						boxLabel: '语文',
 						name: 'subject',
 						inputValue: 'primary_chinese'
-					}]
+					}]/*,
+					listeners : {
+						change : function(){
+							alert('value change');
+						}
+					}*/
+
 				}, {
 					xtype: 'radiogroup',
 					name:'sectionSubject',
@@ -44,7 +55,12 @@
 						boxLabel: '语文',
 						name: 'subject',
 						inputValue: 'middle_chinese'
-					}]
+					}]/*,
+					listeners : {
+						change : function(){
+							alert('value change');
+						}
+					}*/
 				}],
 				tbar: [{
 					text: 'Get Value',
