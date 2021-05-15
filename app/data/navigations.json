@@ -32,7 +32,12 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "nestgriddemo",
                     "leaf": true
-                }
+                },{
+                    "text": "分组Grid",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "groupgriddemo",
+                    "leaf": true
+                }           
             ]
         },
         {
