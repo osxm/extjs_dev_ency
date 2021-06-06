@@ -18,6 +18,12 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "windowdemo",
                     "leaf": true
+                },
+                {
+                    "text": "标签面板的使用",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "tabpaneldemo",
+                    "leaf": true
                 }
             ]
         },
@@ -63,6 +69,12 @@
                     "text": "键盘事件",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "keyboarddemo",
+                    "leaf": true
+                }, 
+                {
+                    "text": "下拉单选值框",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "valueselectfielddemo",
                     "leaf": true
                 }
             ]
