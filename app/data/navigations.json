@@ -24,6 +24,12 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "tabpaneldemo",
                     "leaf": true
+                },
+                {
+                    "text": "表单(Form)及表单元素",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "formdemo",
+                    "leaf": true
                 }
             ]
         },
@@ -43,7 +49,13 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "groupgriddemo",
                     "leaf": true
-                }           
+                } ,
+                {
+                    "text": "WidgetColumn Grid",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "widgetcolgriddemo",
+                    "leaf": true
+                }          
             ]
         },
         {
