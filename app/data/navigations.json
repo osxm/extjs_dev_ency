@@ -166,6 +166,12 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "selectfielddemo",
                     "leaf": true
+                },
+                {
+                    "text": "FieldSet系列",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "fieldsetseries",
+                    "leaf": true
                 }
             ]
         }
