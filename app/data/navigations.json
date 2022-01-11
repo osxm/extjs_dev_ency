@@ -55,7 +55,13 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "widgetcolgriddemo",
                     "leaf": true
-                }          
+                }    ,
+                {
+                    "text": "轻量树-treelist",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "treelistdemo",
+                    "leaf": true
+                }        
             ]
         },
         {
