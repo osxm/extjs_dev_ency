@@ -94,6 +94,12 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "valueselectfielddemo",
                     "leaf": true
+                }, 
+                {
+                    "text": "按钮进阶",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "buttonadvancedemo",
+                    "leaf": true
                 }
             ]
         },
