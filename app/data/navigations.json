@@ -184,7 +184,13 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "fieldsetseries",
                     "leaf": true
-                }
+                },
+                {
+                    "text": "选人组件",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "userpickerdemo",
+                    "leaf": true
+                } 
             ]
         }
     ]
