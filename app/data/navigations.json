@@ -8,6 +8,12 @@
             "selectable": false,
             "children": [
                 {
+                    "text": "字段的使用",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "fielddemo",
+                    "leaf": true
+                },
+                {
                     "text": "树的使用",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "treedemo",
