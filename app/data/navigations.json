@@ -196,7 +196,13 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "userpickerdemo",
                     "leaf": true
-                } 
+                } ,
+                {
+                    "text": "产品生命周期管理",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "product",
+                    "leaf": true
+                }
             ]
         }
     ]

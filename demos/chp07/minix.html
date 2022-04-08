@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ExtJS Single Page Sample</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/ExtjsdevEncy/classic/resources/ExtjsdevEncy-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+        //类型定义
+
+        //1. 继承类的调用
+        Ext.define('Osxm.Parent', {
+            destroy: function () {
+                console.log('父类销毁方法');
+            }
+        });
+
+        Ext.define('Osxm.Child', {
+            extend: 'Osxm.Parent',
+
+            destroy: function () {
+                console.log('子类销毁方法');
+                this.callParent(); //调用父类销毁方法
+            }
+        });
+
+        var obj = new Osxm.Child();
+        obj.destroy(); //控制台输出：  子类销毁方法  父类销毁方法
+
+
+        //2. 添加了混合类 ，混合类释放资源
+        Ext.define('Osxm.Util', {
+            destroy: function () {
+                console.log('公用方法销毁');
+            }
+        });
+        Ext.define('Osxm.Child2', {
+            extend: 'Osxm.Parent',
+            mixins: {
+                util: 'Osxm.Util'
+            },
+            destroy: function () {
+                console.log('子类销毁方法');
+                this.mixins.util.destroy.call(this);
+
+                this.callParent(); //调用父类销毁方法
+            }
+        });
+        var obj = new Osxm.Child2();
+        obj.destroy(); // 子类销毁方法 公用方法销毁  父类销毁方法
+
+
+        //3. 继承Ext.Mixin的混合类
+        Ext.define('Osxm.Util', {
+            extend: 'Ext.Mixin',
+
+            mixinConfig:{
+                after: {
+                    destroy:'destroyUtil'
+                }
+            },
+            destroyUtil: function () {
+                console.log('公用方法销毁');
+            }
+        });
+        Ext.define('Osxm.Child', {
+            extend: 'Osxm.Parent',
+            mixins: {
+                util: 'Osxm.Util'
+            },
+            destroy: function () {
+                console.log('子类销毁方法');
+                this.callParent(); //调用父类销毁方法
+            }
+        });
+        var obj = new Osxm.Child();
+        obj.destroy();   // 子类销毁方法 父类销毁方法 公用方法销毁  
+
+
+        //4. 使用on
+        Ext.define('Osxm.Util', {
+            extend: 'Ext.Mixin',
+
+            mixinConfig:{
+                on: {
+                    destroy:'destroyUtil'
+                }
+            },
+            destroyUtil: function () {
+                console.log('公用方法销毁');
+            }
+        });
+        Ext.define('Osxm.Child', {
+            extend: 'Osxm.Parent',
+            mixins: {
+                util: 'Osxm.Util'
+            },
+            destroy: function () {               
+                this.callParent(); //调用父类销毁方法
+                console.log('子类销毁方法');
+            }
+        });
+        var obj = new Osxm.Child();
+        obj.destroy();
+    </script>
+
+    <script>
+
+    </script>
+
+</head>
+
+<body>
+    <div id="div1">Div 区块</div>
+    <div id="div2">Div2 区块</div>
+    <div id="div3">Div3 区块</div>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Grid Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/ExtjsdevEncy/classic/resources/ExtjsdevEncy-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+        //类型定义
+
+    </script>
+
+    <script>
+        //执行脚本
+
+
+
+        Ext.onReady(function () {
+            Ext.create('Ext.form.Panel', {
+                height: 600,
+                renderTo: 'div1',
+                items: [{
+                    xtype: 'combobox',
+                    fieldLabel: '选择武将',
+                    store: generals,
+                    listeners: {
+                        beforequery: function (queryPlan, eOpts) {
+                            var combo = queryPlan.combo;
+                            combo.getStore().getProxy().setExtraParams({ mykey: "myvalue" });
+                        }
+                    }
+                }]
+            });
+        });
+    </script>
+
+
+
+</head>
+
+<body>
+    <div id="div1" />
+    <div id="div2" />
+</body>
+
+</html>

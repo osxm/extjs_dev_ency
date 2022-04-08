@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Grid Demo</title>
+    <script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+    <link href="../../build/development/ExtjsdevEncy/classic/resources/ExtjsdevEncy-all.css" rel="stylesheet"
+        type="text/css" />
+    <script>
+        //类型定义
+        Ext.define('Override.form.field.VTypes', {
+            override: 'Ext.form.field.VTypes',
+            // 验证函数
+            time: function (value) {
+                return this.timeRe.test(value);
+            },
+            // 用来验证的正则表达式
+            timeRe: /^([1-9]|1[0-9]):([0-5][0-9])(\s[a|p]m)$/i,
+            // 验证错误是提示的错误信息
+            timeText: 'Not a valid time. Must be in the format "12:34 PM".',
+            // vtype Mask property: The keystroke filter mask
+            timeMask: /[\d\s:amp]/i
+        });
+    </script>
+
+    <script>
+        //执行脚本
+        var generals = Ext.create('Ext.data.Store', {
+            fields: ['userId', 'name'],
+            data: [
+                { "userId": "shu001", "name": "刘备" },
+                { "userId": "shu002", "name": "关羽" },
+                { "userId": "shu003", "name": "张飞" }
+            ]
+        });
+
+
+        Ext.onReady(function () {
+            Ext.create('Ext.form.Panel', {
+                height: 600,
+                renderTo: 'div1',
+                items: [{
+                    xtype: 'textfield',
+                    fieldLabel: '日期',
+                    name: 'date',
+                    vtype: 'time'
+                }, {
+                    xtype: 'combobox',
+                    fieldLabel: '选择武将',
+                    store: generals,
+                    queryMode: 'local',
+                    displayField: 'name',
+                    valueField: 'userId',
+                }, {
+                    xtype: 'numberfield',
+                    name: 'mynumfield',
+                    fieldLabel: '数字字段',
+                    maxValue: 99,
+                    minValue: 0,
+                    //hideTrigger:true,
+                    //keyNavEnabled:false,
+                    //mouseWheelEnabled:false
+                }]
+            });
+
+            Ext.create('Ext.form.Panel', {
+                height: 600,
+                renderTo: 'div2',
+                title: '单选框',
+                items: [{
+                    xtype: 'radio',
+                    fieldLabel: '单选框1',
+                    name: 'myradio',
+                    inputValue: '值1'
+                }, {
+                    xtype: 'radio',
+                    boxLabel: '单选框2',
+                    name: 'myradio',
+                    inputValue: '值2'
+                }, {
+                    xtype: 'radio',
+                    fieldLabel: '单选框3',
+                    name: 'myradio',
+                    inputValue: '值3'
+                }]
+            });
+
+
+            Ext.create('Ext.form.Panel', {
+                height: 600,
+                renderTo: 'div3',
+                title: '复选框',
+                items: [{
+                    xtype: 'checkbox',
+                    boxLabel: '复选框1',
+                    name: 'mycheckbox',
+                    inputValue: '值1'
+                }, {
+                    xtype: 'checkbox',
+                    boxLabel: '复选框2',
+                    name: 'mycheckbox',
+                    inputValue: '值2'
+                }, {
+                    xtype: 'checkbox',
+                    fieldLabel: '复选框3',
+                    name: 'mycheckbox',
+                    inputValue: '值3'
+                }],
+                tbar:[{
+                    text:'提交',
+                    handler:function(btn){
+                        var values = btn.findParentByType('form').getValues();
+                        alert(Ext.encode(values));
+                    }
+                }]
+            });
+
+        });
+    </script>
+
+
+
+</head>
+
+<body>
+    <div id="div1" />
+    <div id="div2" />
+    <div id="div3" />
+</body>
+
+</html>

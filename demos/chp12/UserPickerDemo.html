@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>ExtJS Single Page Sample</title>
+	<script type="text/javascript" src="../../ext/build/ext-all-debug.js"></script>
+	<link href="../../build/development/ExtjsdevEncy/classic/resources/ExtjsdevEncy-all.css" rel="stylesheet"
+		type="text/css" />
+	<style>
+		.xm-btn-withchart .x-css-shadow {
+			box-shadow: none !important;
+		}
+	</style>
+	<script>
+		//类型定义
+		Ext.define('Osxm.model.UserPicker', {
+			extend: 'Ext.data.Model',
+			fields: ['userId', 'displayName']
+		});
+
+		Ext.define('Osxm.view.UserPicker', {
+			extend: 'Ext.form.field.Tag',
+			xtype: 'UserPicker',
+			alias: 'widget.UserPicker',
+			displayField: 'displayName',
+			valueField: 'userId'
+		});
+
+		Ext.define('Osxm.store.UserPickerStore', {
+			extend: 'Ext.data.Store',
+			autoLoad: true,
+			alias: 'store.UserPickerStore',
+			model: 'Osxm.model.UserPicker'
+
+		});
+	</script>
+
+	<script>
+		//执行脚本
+		var userStore = Ext.create('Osxm.store.UserPickerStore', {
+			data: [{ userId: 'shu001', displayName: "刘备" }, { userId: 'shu002', displayName: "关羽" }, { userId: 'shu003', displayName: "张飞" }]
+		});
+		var gridStore = Ext.create('Ext.data.Store', {
+			fields: ['city', 'general'],
+			data: [{ city: '许昌', general: '' }, { city: '成都', general: '' }, { city: '成都', general: '' }, { city: '成都', general: '' }, { city: '成都', general: '' }]
+		});
+
+		Ext.onReady(function () {
+			Ext.create('Ext.grid.Panel', {
+				title: '人员选择组件演示',
+				store: gridStore,
+				columns: [
+					{ text: '城池', dataIndex: 'city', flex: 1 },
+					{
+						text: '主将', dataIndex: 'general', flex: 1, editor: {
+							xtype: 'UserPicker',
+							store: userStore
+						}/*,
+						renderer: function (value) {
+							var newValue = null;
+							if (value != null && value.length > 0) {
+								newValue = "";
+								var userIdArray = value;
+								for (var i in userIdArray) {
+									if (userIdArray[i] != null && userIdArray[i].length > 0) {
+										var displayName = null;
+										userStore.getData().each(function (model) {
+											if (userIdArray[i] == model.get('userId')) {
+												displayName = model.get('displayName')
+												return false;
+											}
+										});
+										if (displayName != null && displayName.length > 0) {
+											newValue += displayName;
+										}
+									}
+									if (i < userIdArray.length - 1) {
+										newValue += ',';
+									}
+								}
+							} else {
+								newValue = value;
+							}
+							return newValue;
+						}*/
+					}
+				],
+				plugins: [{
+					ptype: 'rowediting',
+					clicksToEdit: 1,
+					id: 'myplugin'
+				}],
+				height: 600,
+				width: 600,
+				renderTo: 'div1'
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+</body>
+
+</html>
