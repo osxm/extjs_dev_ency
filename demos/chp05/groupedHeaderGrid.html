@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Group Header Grid Demo</title>
+    <script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+    <link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet"  type="text/css" />
+	<script>
+	//类型定义
+	</script>
+
+	<script>
+		//执行脚本
+		Ext.onReady(function () {
+			var mystore = Ext.create('Ext.data.Store',{
+				fields:['power','xc','ly','cd','hz','cs','jy'],
+				data:[{
+					power:'人口',xc:'10000',ly:'20000',cd:'30000',hz:'100000',cs:'50000',jy:'60000'
+				},{
+					power:'武将',xc:'13',ly:'34',cd:'56',hz:'24',cs:'12',jy:'60'
+				}]
+			});
+			Ext.create('Ext.grid.Panel',{
+				renderTo:'div1',
+				store: mystore,
+				columns:[
+				{
+					text:'',
+					dataIndex:'power'
+				},
+				{
+					text:'魏国',
+					columns: [{
+						text:'许昌',
+						dataIndex:'xc'
+					},{
+						text:'洛阳',
+						dataIndex:'ly'
+					}]
+				},{
+					text:'蜀国',
+					columns: [{
+						text:'成都',
+						dataIndex:'cd'
+					},{
+						text:'汉中',
+						dataIndex:'hz'
+					}]
+				},{
+					text:'吴国',
+					columns: [{
+						text:'长沙',
+						dataIndex:'cs'
+					},{
+						text:'建业',
+						dataIndex:'jy'
+					}]
+				}]
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+</body>
+
+</html>

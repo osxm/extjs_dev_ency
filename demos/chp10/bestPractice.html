@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Best Practice</title>
+	<script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+	<link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet" type="text/css" />
+	<script>
+		//类型定义
+		Ext.define('MyApp.config.Runtime', {
+			singleton: true,
+			config: {
+				myGlobalVar: 'myValue'
+			},
+			constructor: function (config) {
+				this.initConfig(config);
+			}
+		});
+
+		Ext.define('MyApp.view.MyGrid', {
+			extend: 'Ext.grid.Panel',
+			initComponent: function () {
+				Ext.apply(this, {
+					store: myStore,
+					region: 'center'
+				});
+				this.callParent(arguments);
+			}
+		});
+		Ext.define('MyApp.view.MyGrid', {
+			extend: 'Ext.grid.Panel',
+			region: 'center',//默认， 可以被重写
+			initComponent: function () {
+				Ext.apply(this, {
+					store: myStore
+				});
+				this.callParent(arguments);
+			}
+		});
+
+		Ext.application({
+			name: 'MyApp',
+			requires: ['MyApp.config.Runtime']
+		});
+
+	</script>
+
+	<script>
+		//执行脚本
+		Ext.onReady(function () {
+
+			//1. 多余的面板
+			Ext.create('Ext.panel.Panel', {
+				items: [{
+					xtype: 'panel', //多余的面板
+					title: '包含Grid的面板',
+					items: [{
+						xtype: 'grid',
+						store: null
+					}]
+				}]
+			});
+
+			//9. 
+			Ext.create('MyApp.config.Runtime', {
+				region: 'center'
+			});
+
+
+			//10. 不必要的复杂
+			var myForm = Ext.create('Ext.form.Panel',{
+				items:[{
+					fieldLabel:'用户名',
+					itemId:'userName'
+				},{
+					fieldLabel:'地址',
+					itemId:'address'
+				},{
+					fieldLabel:'邮箱',
+					itemId:'email'
+				}]
+			});
+			myForm.down('#userName').setValue(record.get('userName'));
+			myForm.down('#address').setValue(record.get('address'));
+			myForm.down('#email').setValue(record.get('email'));
+
+
+			var myForm = Ext.create('Ext.form.Panel',{
+				items:[{
+					fieldLabel:'用户名',
+				    name:'userName'
+				},{
+					fieldLabel:'地址',
+					name:'address'
+				},{
+					fieldLabel:'邮箱',
+					name:'email'
+				}]
+			});
+			myForm.loadRecord(record);
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+</body>
+
+</html>
