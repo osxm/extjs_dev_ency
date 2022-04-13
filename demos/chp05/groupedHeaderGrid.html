@@ -24,13 +24,16 @@
 			Ext.create('Ext.grid.Panel',{
 				renderTo:'div1',
 				store: mystore,
+				width:400,
 				columns:[
 				{
 					text:'',
-					dataIndex:'power'
+					dataIndex:'power',
+					locked:true
 				},
 				{
 					text:'魏国',
+					menuDisabled:true,
 					columns: [{
 						text:'许昌',
 						dataIndex:'xc'
