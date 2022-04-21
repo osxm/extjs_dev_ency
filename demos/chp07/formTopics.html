@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Form Topics</title>
+    <script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+    <link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet"  type="text/css" />
+	<script>
+	//类型定义
+	</script>
+
+	<script>
+		//执行脚本
+		Ext.onReady(function () {
+			var itemsCfg = [];
+			for(var i=0;i<30;i++){
+				var fieldCfg = {
+					fieldLabel:'标签'+i,
+					name:'myField'+i
+				};
+				if(i==20){
+					fieldCfg.allowBlank = false;
+				}
+				itemsCfg.push(fieldCfg);
+			}
+
+			Ext.create('Ext.form.Panel',{
+				title:'定位验证失败栏位',
+				margin:10,
+				height:300,
+				width:300,
+				scrollable:true,
+				defaults:{
+					xtype:'textfield',
+				},
+				items:itemsCfg,
+				tbar:[{
+					text:'提交',
+					handler:function(btn){
+						var form = btn.findParentByType('form');
+						if(!form.isValid()){
+							var fields = form.query('field');
+							if(fields!=null&&fields.length>0){
+								for(var i in fields){
+									if(!fields[i].isValid()){					
+										form.scrollTo(fields[i].getPosition()[0],fields[i].getPosition()[1]+form.getScrollY()-100,true);
+									}
+								}
+							}
+						}
+					}
+				}],
+				renderTo:'div1'
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+</body>
+
+</html>
