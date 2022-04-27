@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Grid Column Header buttons</title>
+	<script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+	<link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet" type="text/css" />
+	<script>
+	//类型定义
+	</script>
+
+	<script>
+		//执行脚本
+		var datas = [
+			{
+				"id": "1",
+				"name": "产品1",
+				"supplier1": "80",
+				"supplier2": "90"
+			},
+			{
+				"id": "2",
+				"name": "产品2",
+				"supplier1": "100",
+				"supplier2": "120"
+			},
+			{
+				"id": "3",
+				"name": "产品3",
+				"supplier1": "200",
+				"supplier2": "120"
+			}
+		];
+
+
+		Ext.onReady(function () {
+			var store = Ext.create('Ext.data.Store', {
+				fields: ['id', 'name', 'supplier1', 'supplier2'],
+				data: datas
+			});
+			var acceptBtn = '<a style="padding: 5px; margin-left:5px;" class="x-btn x-unselectable x-toolbar-item x-btn-default-toolbar-small" hidefocus="on" unselectable="on" role="button" aria-hidden="false" aria-disabled="false" tabindex="0" style="top: 2px; margin: 0px;"><span style="" class="x-btn-wrap x-btn-wrap-default-toolbar-small "><span unselectable="on" style="" class="x-btn-button x-btn-button-default-toolbar-small x-btn-text  x-btn-icon x-btn-icon-left x-btn-button-center "><span unselectable="on" class="x-btn-icon-el x-btn-icon-el-default-toolbar-small x-fa fa-check" style=""></span><span unselectable="on" class="x-btn-inner x-btn-inner-default-toolbar-small">接受</span></span></span></a>';
+			var rejectBtn = '<a style="padding: 5px; margin-left:5px;" class="x-btn x-unselectable x-toolbar-item x-btn-default-toolbar-small" hidefocus="on" unselectable="on" role="button" aria-hidden="false" aria-disabled="false" tabindex="0" style="top: 2px; margin: 0px;"><span style="" class="x-btn-wrap x-btn-wrap-default-toolbar-small "><span unselectable="on" style="" class="x-btn-button x-btn-button-default-toolbar-small x-btn-text  x-btn-icon x-btn-icon-left x-btn-button-center "><span unselectable="on" class="x-btn-icon-el x-btn-icon-el-default-toolbar-small x-fa fa-undo" style=""></span><span unselectable="on" class="x-btn-inner x-btn-inner-default-toolbar-small">驳回</span></span></span></a>';
+			Ext.create('Ext.grid.Panel', {
+				title: '使用HTML原生元素添加按钮',
+				store: store,
+				columns: [{
+					text: '编号',
+					dataIndex: 'id'
+				}, {
+					text: '产品',
+					dataIndex: 'name'
+				}, {
+					text: '供应商1报价' + acceptBtn + rejectBtn,
+					dataIndex: 'supplier1',
+					menuDisabled: true,
+					sortable: false,
+					width: 300
+				}, {
+					text: '供应商2报价' + acceptBtn + rejectBtn,
+					dataIndex: 'supplier2',
+					width: 300
+				}],
+				renderTo: 'div1'
+			});
+
+			Ext.create('Ext.grid.Panel', {
+				title: '直接设置列头的items 添加按钮',
+				store: store,
+				columns: [{
+					text: '编号',
+					dataIndex: 'id'
+				}, {
+					text: '产品',
+					dataIndex: 'name'
+				}, {
+					text: '供应商1报价',
+					dataIndex: 'supplier1',
+					width: 300,
+					items: [{
+						xtype: 'button',
+						text: '接受',
+						scale: 'small',
+						iconCls: 'x-fa fa-check'
+					}]
+				}, {
+					text: '供应商2报价',
+					dataIndex: 'supplier2',
+					width: 300
+				}],
+				renderTo: 'div2'
+			});
+
+			Ext.create('Ext.grid.Panel', {
+				title: '在列头显示文本预留span,创建按钮后renderTo到这个span',
+				store: store,
+				columns: [{
+					text: '编号',
+					dataIndex: 'id'
+				}, {
+					text: '产品',
+					dataIndex: 'name'
+				}, {
+					text: '供应商1报价<span id="supplier1btn1"></span>',
+					dataIndex: 'supplier1',
+					width: 300
+				}, {
+					text: '供应商2报价',
+					dataIndex: 'supplier2',
+					width: 300
+				}],
+				renderTo: 'div3'
+			});
+			Ext.create('Ext.button.Button', {
+				text: '接受',
+				scale: 'small',
+				iconCls: 'x-fa fa-check',
+				renderTo:'supplier1btn1'
+			});
+
+
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<div id="div3"></div>
+</body>
+
+</html>
