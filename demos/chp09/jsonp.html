@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>ExtJS Single Page Sample</title>
+	<script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+	<link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet" type="text/css" />
+	<script>
+	//类型定义
+
+	function myCallBackFunc(obj){
+		alert(Ext.encode(obj));
+	}
+	</script>
+
+	<script>
+		//执行脚本
+		Ext.onReady(function () {
+			Ext.data.JsonP.callback1 = function(obj){
+				alert(Ext.encode(obj));
+			}
+
+			Ext.create('Ext.panel.Panel', {
+				tbar: [{
+					text: '呼叫跨域资源',
+					handler: function () {
+						Ext.data.JsonP.request({
+							url: 'http://localhost:8080/demo/output'
+							//url: 'http://localhost:8080/demo/output?callback=myCallBackFunc'
+						});
+					}
+				}],
+				renderTo:'div1'
+			});
+		});
+
+
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+</body>
+
+</html>
