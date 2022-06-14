@@ -3,8 +3,6 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta name="author" content="Oscar Chen,https://oscar.blog.csdn.net/">
-    <meta name="copyright" content="© 2022 ,Oscar Chen">
 	<title>ExtJS Single Page Sample</title>
     <script type="text/javascript" src="../ext/ext-all-debug.js"></script>
     <link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet"  type="text/css" />
@@ -15,9 +13,17 @@
 	<script>
 		//执行脚本
 		Ext.onReady(function () {
-			Ext.create('Ext.panel.Panel',{
-				html:'Hello'
-			});
+			Ext.state.Manager.setProvider(new Ext.state.CookieProvider({
+				expires: new Date(new Date().getTime()+(1000*60*60*24*7)), // 过期时间7天
+			}));
+
+			Ext.create('Ext.window.Window',{
+				title:'Coookie状态管理',
+				stateful: true,
+				stateId:'mycookiestatewindow',
+				height:100,
+				width:100
+			}).show();
 		});
 	</script>
 

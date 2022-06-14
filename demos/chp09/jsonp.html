@@ -26,7 +26,8 @@
 					text: '呼叫跨域资源',
 					handler: function () {
 						Ext.data.JsonP.request({
-							url: 'http://localhost:8080/demo/output'
+							url: 'http://localhost:8080/demo/output',
+							callbackKey: 'myCallbackFuncName'
 							//url: 'http://localhost:8080/demo/output?callback=myCallBackFunc'
 						});
 					}

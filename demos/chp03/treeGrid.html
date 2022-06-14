@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Oscar Chen,https://oscar.blog.csdn.net/">
+    <meta name="copyright" content="© 2022 ,Oscar Chen">
+    <title>树形表格的演示</title>
+    <script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+    <link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet" type="text/css" />
+    <script>
+	//类型定义
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+            var treeStore = Ext.create('Ext.data.TreeStore', {
+                fields: [ 'name', 'home'],
+                root: {
+                    "children": [{
+                        name: '蜀国',
+                        expanded: true,
+                        "children": [{
+                            name: '刘备',
+                            home: '涿郡',
+                            leaf:true
+                        }, {
+                            name: '关羽',
+                            home: '河东郡',
+                            leaf:true
+                        }, {
+                            name: '张飞',
+                            home: '涿郡',
+                            leaf:true
+                        }]
+                    }, {
+                        name: '魏国',
+                        expanded: true,
+                        "children": [{
+                            name: '曹操',
+                            home: '沛国谯县',
+                            leaf:true
+                        }]
+                    }]
+                }
+            });
+            var gridCols = [ {
+                xtype: 'treecolumn',
+                text: '姓名',
+                dataIndex: 'name',
+                flex: 1
+            }, {
+                text: '家乡',
+                dataIndex: 'home',
+                flex: 1
+            }];
+
+
+            var treeGrid = Ext.create('Ext.tree.Panel', {
+                title: '三国',
+                id: 'myGrid',
+                rootVisible: false,
+                collapsible: true,
+                store: treeStore,
+                width: 600,
+                columns: gridCols,
+                selModel: {
+                    selType: 'checkboxmodel'
+                },
+                renderTo: 'div1'
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="div1"></div>
+</body>
+
+</html>
