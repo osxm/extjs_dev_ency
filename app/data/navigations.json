@@ -106,6 +106,12 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "buttonadvancedemo",
                     "leaf": true
+                }, 
+                {
+                    "text": "状态管理",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "buttonadvancedemo",
+                    "leaf": true
                 }
             ]
         },
