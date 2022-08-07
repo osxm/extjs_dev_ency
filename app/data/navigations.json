@@ -110,7 +110,7 @@
                 {
                     "text": "状态管理",
                     "iconCls": "x-fa fa-wifi",
-                    "viewType": "buttonadvancedemo",
+                    "viewType": "statedemo",
                     "leaf": true
                 }
             ]
@@ -144,6 +144,16 @@
             "selectable": false,
             "children": [
                 {
+                    "text": "带触发器按钮的输入框",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "selectfielddemo",
+                    "leaf": true
+                },                {
+                    "text": "搜索输入框",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "searchfielddemo",
+                    "leaf": true
+                },{
                     "text": "登录页面",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "login",
@@ -183,12 +193,6 @@
                     "text": "CKEditor富文本编辑器",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "ckeditordemo",
-                    "leaf": true
-                },
-                {
-                    "text": "带触发器按钮的输入框",
-                    "iconCls": "x-fa fa-wifi",
-                    "viewType": "selectfielddemo",
                     "leaf": true
                 },
                 {
