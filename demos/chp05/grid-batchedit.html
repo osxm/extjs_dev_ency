@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Oscar Chen,https://oscar.blog.csdn.net/">
+    <meta name="copyright" content="© 2022 ,Oscar Chen">
+	<title>表格批量编辑</title>
+    <script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+    <link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet"  type="text/css" />
+	<script>
+	//类型定义
+	</script>
+
+	<script>
+		//执行脚本
+		Ext.onReady(function () {
+            var store = [{name: '关羽',level:'五虎上将'},{name: '张飞',level:'五虎上将'},{name: '魏延',level:'上将'}];
+			Ext.create('Ext.panel.Panel',{
+                items:[{
+                    xtype:'grid',
+                    title:'column 的renderer 实现',
+                    columns:[{
+                        text:'武将名',
+                        dataIndex:'name'
+                    },{
+                        text:'级别',
+                        dataIndex:'level',
+                        renderer: function(){
+                            
+                        }
+                    }],
+                    store:store
+                },{
+                    xtype:'grid',
+                    title:'widgetcolumn实现列批量编辑',
+                    columns:[{
+                        text:'武将名',
+                        dataIndex:'name'
+                    },{
+                        text:'级别',
+                        dataIndex:'level',
+                        xtype:'widgetcolumn',
+                        widget: {
+                            xtype:'textfield',
+                            bind: '{record.level}'
+                        }
+                    }],
+                    store:store
+                }],        
+                renderTo: 'div1'
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+</body>
+
+</html>
