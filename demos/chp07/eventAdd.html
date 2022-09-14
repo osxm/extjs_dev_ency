@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Oscar Chen,https://oscar.blog.csdn.net/">
+	<meta name="copyright" content="© 2022 ,Oscar Chen">
+	<title>ExtJS Single Page Sample</title>
+	<script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+	<link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet" type="text/css" />
+	<script>
+		Ext.define('Ext.overrides.form.field.Text', {
+			override: 'Ext.form.field.Text',
+			initEvents: function () {
+				var me = this,
+					el = me.inputEl;
+
+				me.callParent();
+
+				me.mon(el, 'compositionstart', me.onCompositionStart, me);
+				me.mon(el, 'compositionupdate', me.onCompositionUpdate, me);
+				me.mon(el, 'compositionend', me.onCompositionEnd, me);
+			},
+			onCompositionStart: function () {
+				console.log('compositionstart');
+			},
+			onCompositionUpdate: function () {
+				console.log('compositionupdate');
+			},
+			onCompositionEnd: function () {
+				console.log('compositionend');
+			}
+		});
+	</script>
+
+	<script>
+		//执行脚本
+		Ext.onReady(function () {
+			Ext.create('Ext.panel.Panel', {
+				items:[{
+					xtype:'textfield',
+					fieldLabel: '添加了composition相关事件的输入框'
+				}],
+				renderTo:'div1'
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+</body>
+
+</html>
