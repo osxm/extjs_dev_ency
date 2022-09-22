@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>公用方法类</title>
+    <script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+    <link href="../ext/ExtjsdevEncy-all.css" rel="stylesheet" type="text/css" />
+    <script>
+        //类型定义
+
+        //1.  基于JS的原生方式实现公用方法—立即执行函数
+        var Osxm = {};
+        Osxm.MyUtil = (function () {
+            Util = {
+                myProperty: 'value1',
+
+                myMethod: function () {
+                    alert('Hello.')
+                }
+            };
+            return Util;
+        })();
+
+        Osxm.MyUtil.myMethod();
+
+        //2. Ext JS定义单例类方式 [推荐]
+        Ext.define('Osxm.MyUtil2', {
+            singleton: true,
+            myMethod: function () {
+                alert('使用Ext JS的方式定义单例类')
+            }
+        });
+
+
+
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+
+            // 3. 在一般类中使用静态关键字statics实现
+            Ext.define('Osxm.MyUtil3', {
+                statics: {
+                    myMethod: function () {
+                        alert('在一般类中使用静态关键字statics实现')
+                    }
+                }
+            });
+            Osxm.MyUtil3.myMethod();
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="div1"></div>
+
+</body>
+
+</html>

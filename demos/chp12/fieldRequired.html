@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Oscar Chen,https://oscar.blog.csdn.net/">
+	<meta name="copyright" content="© 2022 ,Oscar Chen">
+	<title>自动动态必填</title>
+	<script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+	<link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet" type="text/css" />
+	<script>
+	//类型定义
+	</script>
+
+	<script>
+		//执行脚本
+		Ext.onReady(function () {
+			var panel = Ext.create('Ext.panel.Panel', {
+				renderTo: 'div1',
+				items: [{
+					xtype: 'textfield',
+					itemId: 'mytextfield',
+					fieldLabel: '动态设置必填',
+					validator: function (val) {
+						var isValid = true;
+						if (val != null && val.length > 0) {
+							// 有值
+						} else {
+							if (this.getFieldLabel().startsWith('<span style="color: #B22222;display:inline-block;width:10px">* </span>')) {
+								isValid = 'This field is required.';
+							}
+						}
+						return isValid;
+					}
+				}],
+				tbar: [{
+					text: '设置必填',
+					handler: function () {
+						var field = panel.getComponent('mytextfield');
+						if (field.getFieldLabel().startsWith('<span style="color: #B22222;display:inline-block;width:10px"></span>')) {
+							field.setFieldLabel('<span style="color: #B22222;display:inline-block;width:10px">* </span>' + field.getFieldLabel().substr(68));
+						} else if (!field.getFieldLabel().startsWith('<span style="color: #B22222;display:inline-block;width:10px">* </span>')) {
+							field.setFieldLabel('<span style="color: #B22222;display:inline-block;width:10px">* </span>' + field.getFieldLabel());
+						}
+						field.markInvalid('This field is required.');
+						field.allowBlank = true;
+					}
+				}, {
+					text: '设置非必填',
+					handler: function () {
+						var field = panel.getComponent('mytextfield');
+						field.clearInvalid();
+						field.setFieldLabel(field.getFieldLabel().replace('<span style="color: #B22222;display:inline-block;width:10px">* </span>', '<span style="color: #B22222;display:inline-block;width:10px"></span>'));
+					}
+				}, {
+					text: '验证有效',
+					handler: function () {
+						var field = panel.getComponent('mytextfield');
+						alert(field.isValid());
+					}
+				}]
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+</body>
+
+</html>
