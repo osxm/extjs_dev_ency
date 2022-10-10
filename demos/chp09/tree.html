@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Oscar Chen,https://oscar.blog.csdn.net/">
+	<meta name="copyright" content="© 2022 ,Oscar Chen">
+	<title>ExtJS Single Page Sample</title>
+	<script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+	<link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet" type="text/css" />
+	<script>
+	//类型定义
+	</script>
+
+	<script>
+		//执行脚本
+		Ext.onReady(function () {
+			Ext.create('Ext.tree.Panel', {
+				title: '三国',
+				width: 400,
+				height: 400,
+				store: {
+					proxy:{
+						type:'ajax',
+						url:'http://localhost:8080/tree/getdata'
+						
+					}
+				},
+				rootVisible: false,
+				renderTo: Ext.getBody()
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+</body>
+
+</html>
