@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Oscar Chen,https://oscar.blog.csdn.net/">
+    <meta name="copyright" content="© 2022 ,Oscar Chen">
+    <title>Grid特性</title>
+    <script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+    <link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet" type="text/css" />
+
+    <script>
+	//类型定义
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+            var store = [{ name: '关羽', level: '五虎上将',soldiers:4000 }, { name: '张飞', level: '五虎上将' ,soldiers:1000}, { name: '魏延', level: '上将',soldiers:2000 }];
+            Ext.create('Ext.panel.Panel', {
+                items: [{
+                    xtype: 'grid',
+                    title: 'Grid汇总行特性:summary',
+                    features: [{
+                        ftype: 'summary'
+                    }],
+                    columns: [{
+                        text: '武将名',
+                        dataIndex: 'name',
+                        summaryType: 'count',
+                        summaryRenderer: function(value, summaryData, field ,metaData ) {
+                            return Ext.String.format('<b>武将总数:{0}</b>', value);
+                        }
+                    }, {
+                        text: '级别',
+                        dataIndex: 'level',
+                        width:200,
+                        summaryType: function(models,valueArray) {
+                            var icount = 0;
+                            for(var i in valueArray){
+                                if('五虎上将'==valueArray[i]){
+                                    icount += 1;
+                                }
+                            }
+                            return Ext.String.format('<b>五虎上将总数:{0}</b>', icount);
+                        }
+                    }, {
+                        text: '兵力',
+                        dataIndex: 'soldiers',
+                        summaryType: 'sum'
+                    }],
+                    store: store
+                }],
+                renderTo: 'div1'
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="div1"></div>
+</body>
+
+</html>
