@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Oscar Chen,https://oscar.blog.csdn.net/">
+    <meta name="copyright" content="© 2022 ,Oscar Chen">
+    <title>Grid 分页</title>
+    <script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+    <link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet" type="text/css" />
+
+    <script>
+	//类型定义
+    </script>
+
+    <script>
+        //执行脚本
+        Ext.onReady(function () {
+            Ext.create('Ext.panel.Panel', {
+                items: [{
+                    xtype: 'grid',
+                    title: 'Grid Store 后端分页',
+                    columns: [{
+                        text: 'Name',
+                        dataIndex: 'name'
+                    }],
+                    tbar: {
+                        xtype: 'pagingtoolbar',
+                        displayInfo: true
+                    },
+                    store: {
+                        type: 'json',
+                        fields: ['name'],
+                        autoLoad: true,
+                        proxy: {
+                            type: 'ajax',
+                            url: 'http://localhost:8080/grid/users',
+                            reader: {
+                                type: 'json',
+                                rootProperty: 'datas'
+                            }
+                        }
+                    }
+                }],
+                renderTo: 'div1'
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="div1"></div>
+</body>
+
+</html>
