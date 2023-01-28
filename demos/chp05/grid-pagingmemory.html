@@ -44,13 +44,13 @@
                 }],
                 renderTo: 'div1'
             });
-            //2. 前端
+            //2. 前端 - 不正确
             var users = [];
             for (var i = 0; i < 102; i++) {
-                users.push({ name: 'user' + i+1 });
+                users.push({ name: 'user' + (i + 1) });
             }
             Ext.create('Ext.panel.Panel', {
-                title: '前端内存分页',
+                title: '前端内存分页-非正确使用',
                 items: {
                     xtype: 'grid',
                     height: 400,
@@ -70,6 +70,98 @@
                 renderTo: 'div2'
             });
 
+            //3. 前端 - 正确
+            var users = [];
+            for (var i = 0; i < 102; i++) {
+                users.push({ name: 'user' + (i + 1) });
+            }
+            Ext.create('Ext.panel.Panel', {
+                title: '前端内存分页-正确',
+                items: {
+                    xtype: 'grid',
+                    height: 400,
+                    columns: [{
+                        text: '姓名',
+                        dataIndex: 'name'
+                    }],
+                    tbar: {
+                        xtype: 'pagingtoolbar',
+                        displayInfo: true
+                    },
+                    store: {
+                        data: users,
+                        fields: ['name'],
+                        proxy: {
+                            type: 'memory',
+                            enablePaging: true
+                        }
+                    }
+                },
+                renderTo: 'div3'
+            });
+
+            //4. 前端 - 动态添加数据
+            Ext.create('Ext.panel.Panel', {
+                title: '前端内存分页-动态添加',
+                items: {
+                    xtype: 'grid',
+                    height: 400,
+                    columns: [{
+                        text: '姓名',
+                        dataIndex: 'name'
+                    }],
+                    tbar: {
+                        xtype: 'pagingtoolbar',
+                        displayInfo: true
+                    },
+                    store: {
+                        data: [],
+                        fields: ['name'],
+                        proxy: {
+                            type: 'memory',
+                            enablePaging: true
+                        }
+                    },
+                    bbar: [{
+                        text: '添加数据',
+                        handler: function (btn) {
+                            var grid = btn.findParentByType('grid');
+                            btn.findParentByType('grid').getStore().add({ name: 'user1' });
+                            grid.getDockedItems('toolbar')[0].query('pagingtoolbar')[0].bindStore(grid.getStore());
+                        }
+                    }, {
+                        text: '设置数据',
+                        handler: function (btn) {
+                            var grid = btn.findParentByType('grid');
+                            btn.findParentByType('grid').getStore().setData([{ name: 'user1' }]);
+                            //grid.getDockedItems('toolbar')[0].query('pagingtoolbar')[0].setData([{name:'user1'}]);
+                            grid.getDockedItems('toolbar')[0].query('pagingtoolbar')[0].bindStore(grid.getStore());
+                        }
+                    }, {
+                        text: '设置Store',
+                        handler: function (btn) {
+                            var users = [];
+                            for (var i = 0; i < 102; i++) {
+                                users.push({ name: 'user' + (i + 1) });
+                            }
+                            var grid = btn.findParentByType('grid');
+                            var store = Ext.create('Ext.data.Store', {
+                                autoLoad: true,
+                                data : users,
+                                fields: ['name'],
+                                proxy: {
+                                    type: 'memory',
+                                    enablePaging:true      
+                                }
+                            });
+                            btn.findParentByType('grid').setStore(store);
+                        }
+                    }]
+                },
+                renderTo: 'div4'
+            });
+
+
         });
     </script>
 
@@ -78,6 +170,8 @@
 <body>
     <div id="div1"></div>
     <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4"></div>
 </body>
 
 </html>
