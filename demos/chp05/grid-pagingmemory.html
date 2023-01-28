@@ -16,6 +16,59 @@
     <script>
         //执行脚本
         Ext.onReady(function () {
+            Ext.create('Ext.panel.Panel', {
+                items: [{
+                    xtype: 'grid',
+                    title: 'Grid Store 后端分页',
+                    columns: [{
+                        text: 'Name',
+                        dataIndex: 'name'
+                    }],
+                    tbar: {
+                        xtype: 'pagingtoolbar',
+                        displayInfo: true
+                    },
+                    store: {
+                        type: 'json',
+                        fields: ['name'],
+                        autoLoad: true,
+                        proxy: {
+                            type: 'ajax',
+                            url: 'http://localhost:8080/grid/users',
+                            reader: {
+                                type: 'json',
+                                rootProperty: 'datas'
+                            }
+                        }
+                    }
+                }],
+                renderTo: 'div1'
+            });
+            //2. 前端
+            var users = [];
+            for (var i = 0; i < 102; i++) {
+                users.push({ name: 'user' + i+1 });
+            }
+            Ext.create('Ext.panel.Panel', {
+                title: '前端内存分页',
+                items: {
+                    xtype: 'grid',
+                    height: 400,
+                    columns: [{
+                        text: '姓名',
+                        dataIndex: 'name'
+                    }],
+                    tbar: {
+                        xtype: 'pagingtoolbar',
+                        displayInfo: true
+                    },
+                    store: {
+                        data: users,
+                        fields: ['name'],
+                    }
+                },
+                renderTo: 'div2'
+            });
 
         });
     </script>
@@ -24,6 +77,7 @@
 
 <body>
     <div id="div1"></div>
+    <div id="div2"></div>
 </body>
 
 </html>
