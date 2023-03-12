@@ -7,8 +7,7 @@
     <meta name="author" content="Oscar Chen,https://oscar.blog.csdn.net/">
     <meta name="copyright" content="© 2022 ,Oscar Chen">
     <script type="text/javascript" src="../ext/ext-all-debug.js"></script>
-    <link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet"
-        type="text/css" />
+    <link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet" type="text/css" />
     <script>
         //类型定义
         Ext.define('Override.form.field.VTypes', {
@@ -109,15 +108,30 @@
                     name: 'mycheckbox',
                     inputValue: '值3'
                 }],
-                tbar:[{
-                    text:'提交',
-                    handler:function(btn){
+                tbar: [{
+                    text: '提交',
+                    handler: function (btn) {
                         var values = btn.findParentByType('form').getValues();
                         alert(Ext.encode(values));
                     }
                 }]
             });
 
+            Ext.create('Ext.form.Panel', {
+                height: 600,
+                renderTo: 'div4',
+                title: '字段集合',
+                items: [{
+                    xtype: 'fieldset',
+                    title: 'My Field Set(字段集合)',
+                    collapsible: true,
+                    items: [{
+                        xtype: 'textfield',
+                        fieldLabel: '字段1'
+                    }]
+                }],
+                tbar: []
+            });
         });
     </script>
 
@@ -129,6 +143,7 @@
     <div id="div1" />
     <div id="div2" />
     <div id="div3" />
+    <div id="div4" />
 </body>
 
 </html>
