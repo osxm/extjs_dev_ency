@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Oscar Chen,https://oscar.blog.csdn.net/">
+    <meta name="copyright" content="© 2023 ,Oscar Chen">
+	<title>Button Demo</title>
+    <script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+    <link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet"  type="text/css" />
+	<script>
+	//类型定义
+	</script>
+
+	<script>
+		//执行脚本
+		Ext.onReady(function () {
+			Ext.create('Ext.button.Button', {
+				renderTo: 'div1',
+				enableToggle: true,
+				text: '按钮'
+			});
+
+			Ext.create('Ext.form.Panel',{
+				layout:'vbox',
+				defaults:{
+					margin:10,
+				},
+				items:[{
+					xtype: 'button',
+					text: '一般的Button',
+					iconCls: 'x-fa fa-edit',
+					
+					/*handler: function(){
+						alert("你点击了我.");
+					},*/
+					menu: new Ext.menu.Menu({
+						items: [
+							// 以下是子按钮
+							{text: 'Item 1', handler: function(){ alert("Item 1 clicked"); }},
+							{text: 'Item 2', handler: function(){ alert("Item 2 clicked"); }}
+						]
+					})
+				},{
+					xtype: 'splitbutton',
+					text: 'Split子菜单按钮',
+					iconCls: 'x-fa fa-check',
+					menu:{
+						xtype: 'menu',
+						items:[{
+							text: '子菜单1'
+						},{
+							text: '子菜单2'
+						}]
+						
+					}
+				},{
+					xtype: 'cycle',
+					text: 'Cycle子菜单按钮',
+					iconCls: 'x-fa fa-home',
+					menu:{
+						xtype: 'menu',
+						items:[{
+							text: '子菜单1'
+						},{
+							text: '子菜单2'
+						}]
+						
+					}
+				},{
+					xtype: 'segmentedbutton',
+					text: 'Segment 分组按钮',
+					iconCls: 'x-fa fa-edit',
+					items: [{
+						text: 'Segment Item 1',
+						menu: [{
+							text: 'Menu Item 1'
+						}]
+					},{
+						text: 'Segment Item 2',
+						tooltip: 'My custom tooltip'
+					},{
+						text: 'Segment Item 3'
+					}],
+				}],
+				renderTo: 'div2'
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+</body>
+
+</html>
