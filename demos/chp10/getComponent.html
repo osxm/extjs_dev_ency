@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Oscar Chen,https://oscar.blog.csdn.net/">
+    <meta name="copyright" content="© 2023 ,Oscar Chen">
+	<title>组件获取</title>
+    <script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+    <link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet"  type="text/css" />
+	<script>
+	//类型定义
+	</script>
+
+	<script>
+		//执行脚本
+		Ext.onReady(function () {
+			var panel = Ext.create('Ext.panel.Panel',{
+			    items:[{
+					xtype: 'panel',
+					title: '组件1： 设置id, 通过Ext.getCmp(id)获取',
+					id: 'myPanel1'
+				},{
+					xtype: 'panel',
+					title: '组件2：设置itemId, , 通过父组件.getComponent(id)获取',
+					itemId: 'myPanel2'
+				},{
+					xtype: 'panel',
+					title: '组件2：设置itemId, , 通过父组件.getComponent(id)获取',
+					id: 'myPanel2'
+				},{
+					xtype: 'panel',
+					title: '组件3：上层组件的query方法查找',
+					name: 'myPanel3'
+				}],
+				tbar:[{
+					text: 'Ext.getCmp(id)获取组件',
+					handler: function(){
+						alert(Ext.getCmp('myPanel1'));
+					}
+				},{
+					text: '父组件.getComponent(itemId)获取组件',
+					handler: function(){
+						alert(panel.getComponent('myPanel2'));
+					}
+				},{
+					text: '上层组件.query(组件查询描述符)获取组件',
+					handler: function(){
+						var myPanel3 = panel.query('panel[name=myPanel3]')[0];
+						alert(myPanel3);
+					}
+				},{
+					text: '通过按钮找上级组件',
+					handler: function(btn){
+						var panel = btn.findParentByType('panel');
+						alert(panel);
+					}
+				}],
+				renderTo: 'div1'
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+</body>
+
+</html>
