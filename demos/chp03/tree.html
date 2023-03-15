@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Oscar Chen,https://oscar.blog.csdn.net/">
+	<meta name="copyright" content="© 2023 ,Oscar Chen">
+	<title>ExtJS Single Page Sample</title>
+	<script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+	<link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet" type="text/css" />
+	<style>
+		.my-node{
+			color: red;
+		}
+	</style>
+	<script>
+	//类型定义
+	</script>
+
+	<script>
+		//执行脚本
+		Ext.onReady(function () {
+			var panel = Ext.create('Ext.panel.Panel', {
+				renderTo: 'div1',
+				items: [{
+					xtype: 'treepanel',
+					title: '取本地数据的树',
+					rootVisible: false,
+					store: Ext.create('Ext.data.TreeStore', {
+						root: {
+							expanded: true,
+							children: [{
+								text: '蜀国',
+								expanded: true,
+								children: [{
+									"text": "刘备",
+									"leaf": true
+								}, {
+									"text": "关羽",
+									"leaf": true
+								}, {
+									"text": "张飞",
+									"leaf": true
+								}]
+							}]
+						}
+					})
+				}],
+				bbar: [{
+					text: '改变树节点的字体颜色',
+					handler: function(btn){
+						var treePanel = panel.child('treepanel');
+						treePanel.getRootNode().cascade({after:function(n){
+							var node = treePanel.getView().getNode(n);
+							treePanel.getView().getNode(n).className= 'x-grid-item my-node';
+						}});
+					}
+				}]
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+</body>
+
+</html>
