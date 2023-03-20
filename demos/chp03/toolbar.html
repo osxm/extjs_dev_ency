@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Oscar Chen,https://oscar.blog.csdn.net/">
+	<meta name="copyright" content="© 2023 ,Oscar Chen">
+	<title>工具栏使用演示</title>
+	<script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+	<link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet" type="text/css" />
+	<script>
+	//类型定义
+	</script>
+
+	<script>
+		//执行脚本
+		Ext.onReady(function () {
+			Ext.create('Ext.toolbar.Toolbar', {
+				renderTo: 'div1',
+				items: [{
+					text: '默认的按钮类型'
+				}, {
+					xtype: 'splitbutton',
+					text: '分割按钮'
+				}, '->', //等同于 { xtype: 'tbfill' }
+				{
+					xtype: 'textfield',
+					emptyText: '输入框'
+				}, '-',//等同于  {xtype: 'tbseparator'} 
+					'纯文本1 ',
+					'',  //等同于   { xtype: 'tbspacer' }
+					'纯文本2 '
+				]
+			});
+
+			var toolbar = Ext.create('Ext.toolbar.Toolbar', {
+				renderTo: 'div2',
+				items: [{
+					//1. 配置方式添加的按钮
+					text: '配置方式添加的按钮'
+				}, //2. 创建按钮等组件的实例
+				Ext.create('Ext.button.Button', {
+					text: '按钮实例添加'
+				}), { //往工具栏里动态添加按钮
+					text: '点击动态添加按钮',
+					handler: function () {
+						toolbar.add({ text: '动态添加的按钮' })
+					}
+				}]
+			});
+
+			// 获取
+			Ext.create('Ext.toolbar.Toolbar', {
+				renderTo: 'div3',
+				items: [{
+					text: '从按钮获取父工具栏',
+					handler: function (btn) {
+						var toolbar = btn.findParentByType('toolbar');
+						alert(toolbar);
+					}
+				}, {
+					text: '从工具栏获取按钮',
+					handler: function (btn) {
+						var toolbar = btn.findParentByType('toolbar');
+						var btn2 = toolbar.child('[name=btn2]');
+						alert(btn2);
+					}
+				}, {
+					text: '按钮 2',
+					name: 'btn2'
+				}]
+			});
+
+			// 启用和禁用
+			Ext.create('Ext.toolbar.Toolbar', {
+				renderTo: 'div4',
+				items: [{
+					text: '禁用工具栏',
+					handler: function (btn) {
+						var toolbar = btn.findParentByType('toolbar');
+						if(toolbar.isDisabled()){
+							toolbar.enable();
+						}else{
+							toolbar.disable();
+						}
+					}
+				}, {
+					text: '禁用按钮',
+					handler: function (btn) {
+						var toolbar = btn.findParentByType('toolbar');
+						var btn2 = toolbar.child('[name=btn2]');
+						btn2.disable();
+					}
+				}, {
+					text: '按钮 2',
+					name: 'btn2'
+				}]
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<div id="div3"></div>
+	<div id="div4"></div>
+</body>
+
+</html>
