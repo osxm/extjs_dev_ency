@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Oscar Chen,https://oscar.blog.csdn.net/">
+	<meta name="copyright" content="© 2023 ,Oscar Chen">
+	<title>面板工具栏</title>
+	<script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+	<link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet" type="text/css" />
+	<script>
+	//类型定义
+	</script>
+
+	<script>
+		//执行脚本
+		Ext.onReady(function () {
+			Ext.create('Ext.panel.Panel', {
+				renderTo: 'div1',
+				defaults: {
+					height: 160,
+					items: { xtype: 'container', html: 'hello, 这是面板内容' },
+				},
+				items: [{
+					xtype: 'panel',
+					title: 'tbar顶部工具栏',
+
+					tbar: [{
+						iconCls: 'x-fa fa-edit',
+						text: '按钮1'
+					}]
+				}, {
+					xtype: 'panel',
+					title: 'bbar底部工具栏',
+					bbar: [{
+						iconCls: 'x-fa fa-edit',
+						text: '按钮1'
+					}]
+				}, {
+					xtype: 'panel',
+					title: 'lbar左侧工具栏',
+					lbar: [{
+						iconCls: 'x-fa fa-edit',
+						text: '按钮1'
+					}]
+				}, {
+					xtype: 'panel',
+					title: 'rbar右侧工具栏',
+					rbar: [{
+						iconCls: 'x-fa fa-edit',
+						text: '按钮1'
+					}]
+				}, {
+					xtype: 'panel',
+					title: 'fbar 添加工具栏',
+					fbar: [{
+						iconCls: 'x-fa fa-edit',
+						text: '按钮1'
+					}]
+				}, {
+					xtype: 'panel',
+					title: 'buttons 添加按钮',
+					buttons: [{
+						iconCls: 'x-fa fa-edit',
+						text: '按钮1'
+					}]
+				}, {
+					xtype: 'panel',
+					title: 'dockedItems 添加按钮',
+					dockedItems: [{
+						xtype: 'toolbar',
+						dock: 'bottom',
+						//ui: 'footer',
+						items: [
+							{ text: '按钮1',iconCls: 'x-fa fa-edit' }
+						]
+					}]
+				}, {
+					xtype: 'panel',
+					title: 'dockedItems 添加按钮 ui: \'footer\'',
+					dockedItems: [{
+						xtype: 'toolbar',
+						dock: 'bottom',
+						ui: 'footer',
+						items: [
+							{ text: '按钮1',iconCls: 'x-fa fa-edit' }
+						]
+					}]
+				}]
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+</body>
+
+</html>
