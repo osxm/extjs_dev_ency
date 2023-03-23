@@ -50,24 +50,25 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "nestgriddemo",
                     "leaf": true
-                },{
+                },
+                {
                     "text": "分组Grid",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "groupgriddemo",
                     "leaf": true
-                } ,
+                },
                 {
                     "text": "WidgetColumn Grid",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "widgetcolgriddemo",
                     "leaf": true
-                }    ,
+                },
                 {
                     "text": "轻量树-treelist",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "treelistdemo",
                     "leaf": true
-                }        
+                }
             ]
         },
         {
@@ -94,19 +95,19 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "keyboarddemo",
                     "leaf": true
-                }, 
+                },
                 {
                     "text": "下拉单选值框",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "valueselectfielddemo",
                     "leaf": true
-                }, 
+                },
                 {
                     "text": "按钮进阶",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "buttonadvancedemo",
                     "leaf": true
-                }, 
+                },
                 {
                     "text": "状态管理",
                     "iconCls": "x-fa fa-wifi",
@@ -144,16 +145,24 @@
             "selectable": false,
             "children": [
                 {
+                    "text": "Grid扩展组件",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "gridextenddemo",
+                    "leaf": true
+                },
+                {
                     "text": "带触发器按钮的输入框",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "selectfielddemo",
                     "leaf": true
-                },                {
+                },
+                {
                     "text": "搜索输入框",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "searchfielddemo",
                     "leaf": true
-                },{
+                },
+                {
                     "text": "登录页面",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "login",
@@ -206,7 +215,7 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "userpickerdemo",
                     "leaf": true
-                } ,
+                },
                 {
                     "text": "产品生命周期管理",
                     "iconCls": "x-fa fa-wifi",
