@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Oscar Chen,https://oscar.blog.csdn.net/">
+	<meta name="copyright" content="© 2023 ,Oscar Chen">
+	<title>前后端参数传递</title>
+	<script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+	<link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet" type="text/css" />
+	<script>
+	//类型定义
+	</script>
+
+	<script>
+		//执行脚本
+		Ext.onReady(function () {
+			Ext.create('Ext.panel.Panel', {
+				renderTo: 'div1',
+				tbar: [{
+					text: 'URL传递参数',
+					handler: function (btn) {
+						Ext.Ajax.request({
+							url: 'http://localhost:8080/params/urlparam?param1=url传递的参数值',
+							success: function (response, opts) {
+								alert(response.responseText);
+							},
+							failure: function (response, opts) {
+								console.log('server-side failure with status code '
+									+ response.status);
+							}
+						});
+					}
+				},{
+					text: 'params传递参数',
+					handler: function (btn) {
+						Ext.Ajax.request({
+							url: 'http://localhost:8080/params/urlparam',
+							//method: 'GET',  //默认是POST
+							params: {param1: 'param1传递的参数值'},
+							success: function (response, opts) {
+								alert(response.responseText);
+							},
+							failure: function (response, opts) {
+								console.log('server-side failure with status code '
+									+ response.status);
+							}
+						});
+					}
+				}]
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+</body>
+
+</html>
