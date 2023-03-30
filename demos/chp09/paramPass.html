@@ -32,12 +32,27 @@
 						});
 					}
 				},{
-					text: 'params传递参数',
+					text: 'params传递字符串参数',
 					handler: function (btn) {
 						Ext.Ajax.request({
 							url: 'http://localhost:8080/params/urlparam',
 							//method: 'GET',  //默认是POST
 							params: {param1: 'param1传递的参数值'},
+							success: function (response, opts) {
+								alert(response.responseText);
+							},
+							failure: function (response, opts) {
+								console.log('server-side failure with status code '
+									+ response.status);
+							}
+						});
+					}
+				},{
+					text: 'params传递多个参数',
+					handler: function (btn) {
+						Ext.Ajax.request({
+							url: 'http://localhost:8080/params/useparams',
+							params: {id:1,name:'刘备'},
 							success: function (response, opts) {
 								alert(response.responseText);
 							},
