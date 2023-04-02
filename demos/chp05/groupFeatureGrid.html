@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="Oscar Chen,https://oscar.blog.csdn.net/">
+	<meta name="copyright" content="© 2023 ,Oscar Chen">
+	<title>数据分组表格的高级使用</title>
+	<script type="text/javascript" src="../ext/ext-all-debug.js"></script>
+	<link href="../../classic/resources/ExtjsdevEncy-all.css" rel="stylesheet" type="text/css" />
+	<script>
+	//类型定义
+	</script>
+
+	<script>
+		//执行脚本
+		Ext.onReady(function () {
+			Ext.create('Ext.panel.Panel', {
+				renderTo: 'div1',
+				items: [{
+					xtype: 'grid',
+					columns: [{ text: '武将名', dataIndex: 'name', flex: 1 },
+					{ text: '等级', dataIndex: 'rank', flex: 1 }],
+					store: Ext.create('Ext.data.Store', {
+						fields: ['name', 'rank', 'country'],
+						//groupField: 'country',
+						grouper:{
+							property: 'country',
+							sortProperty: 'iSort'
+						},
+						data: [{ name: '关羽', rank: '上将', country: '2.蜀国', iSort: 1 },
+						{ name: '张飞', rank: '上将', country: '2.蜀国' , iSort: 1},
+						{ name: '典韦', rank: '上将', country: '1.魏国', iSort: 2 },
+						{ name: '许楮', rank: '上将', country: '1.魏国' , iSort: 2}]
+					}),
+					features: [{
+						ftype: 'grouping',
+						groupHeaderTpl: '{name}'
+					}]
+				}]
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<div id="div1"></div>
+</body>
+
+</html>
