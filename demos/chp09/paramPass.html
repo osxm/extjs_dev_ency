@@ -31,13 +31,13 @@
 							}
 						});
 					}
-				},{
+				}, {
 					text: 'params传递字符串参数',
 					handler: function (btn) {
 						Ext.Ajax.request({
-							url: 'http://localhost:8080/params/urlparam',
+							url: 'http://localhost:8080/params/paramstr',
 							//method: 'GET',  //默认是POST
-							params: {param1: 'param1传递的参数值'},
+							params: { param1: 'param1传递的参数值' },
 							success: function (response, opts) {
 								alert(response.responseText);
 							},
@@ -47,12 +47,43 @@
 							}
 						});
 					}
-				},{
-					text: 'params传递多个参数',
+				}, {
+					text: 'params传递对象类型参数',
 					handler: function (btn) {
 						Ext.Ajax.request({
-							url: 'http://localhost:8080/params/useparams',
-							params: {id:1,name:'刘备'},
+							url: 'http://localhost:8080/params/paramobj',
+							params: { id: 1, name: '刘备' },
+							success: function (response, opts) {
+								alert(response.responseText);
+							},
+							failure: function (response, opts) {
+								console.log('server-side failure with status code '
+									+ response.status);
+							}
+						});
+					}
+				}, {
+					text: 'params传递字符串数组',
+					handler: function (btn) {
+						Ext.Ajax.request({
+							url: 'http://localhost:8080/params/paramstrarry',
+							params: { ids:['user001','user002','user003','user004','user005'] },
+							success: function (response, opts) {
+								alert(response.responseText);
+							},
+							failure: function (response, opts) {
+								console.log('server-side failure with status code '
+									+ response.status);
+							}
+						});
+					}
+				}, {
+					text: '传递Json类型参数',
+					handler: function (btn) {
+						Ext.Ajax.request({
+							url: 'http://localhost:8080/params/jsonparam',
+							//method: 'POST',
+							jsonData: { id: 1, name: '刘备',course:['语文','数学'] },
 							success: function (response, opts) {
 								alert(response.responseText);
 							},
