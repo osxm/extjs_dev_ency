@@ -62,7 +62,7 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "widgetcolgriddemo",
                     "leaf": true
-                },{
+                }, {
                     "text": "Grid进阶使用",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "gridadv",
@@ -160,6 +160,12 @@
             "expanded": false,
             "selectable": false,
             "children": [
+                {
+                    "text": "Grid扩展组件",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "gridextenddemo",
+                    "leaf": true
+                },
                 {
                     "text": "带触发器按钮的输入框",
                     "iconCls": "x-fa fa-wifi",
