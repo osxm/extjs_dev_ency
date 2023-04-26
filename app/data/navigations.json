@@ -36,6 +36,12 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "formdemo",
                     "leaf": true
+                },
+                {
+                    "text": "Grid的基本使用",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "griddemo",
+                    "leaf": true
                 }
             ]
         },
