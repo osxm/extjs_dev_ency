@@ -36,12 +36,6 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "formdemo",
                     "leaf": true
-                },
-                {
-                    "text": "Grid的基本使用",
-                    "iconCls": "x-fa fa-wifi",
-                    "viewType": "griddemo",
-                    "leaf": true
                 }
             ]
         },
@@ -78,6 +72,11 @@
                     "text": "轻量树-treelist",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "treelistdemo",
+                    "leaf": true
+                }, {
+                    "text": "Tab进阶使用",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "tabpaneladv",
                     "leaf": true
                 }
             ]
@@ -126,17 +125,6 @@
                     "leaf": true
                 }
             ]
-        }, {
-            "text": "第10章 开发最佳实践",
-            "iconCls": "x-fa fa-list-ul",
-            "expanded": false,
-            "selectable": false,
-            "children": [   {
-                "text": "控制器的使用",
-                "iconCls": "x-fa fa-wifi",
-                "viewType": "controllerdemo",
-                "leaf": true
-            }]
         },
         {
             "text": "第11章 常见错误及解决",
