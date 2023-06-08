@@ -80,6 +80,11 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "treelistdemo",
                     "leaf": true
+                }, {
+                    "text": "Tab进阶使用",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "tabpaneladv",
+                    "leaf": true
                 }
             ]
         },
