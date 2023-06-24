@@ -80,7 +80,8 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "treelistdemo",
                     "leaf": true
-                }, {
+                },
+                {
                     "text": "Tab进阶使用",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "tabpaneladv",
@@ -129,6 +130,20 @@
                     "text": "状态管理",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "statedemo",
+                    "leaf": true
+                }
+            ]
+        },
+        {
+            "text": "第9章 Ext JS+Spring Boot实战",
+            "iconCls": "x-fa fa-list-ul",
+            "expanded": false,
+            "selectable": false,
+            "children": [
+                {
+                    "text": "文件上传",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "fileuploadinteg",
                     "leaf": true
                 }
             ]
