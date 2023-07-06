@@ -86,6 +86,12 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "tabpaneladv",
                     "leaf": true
+                },
+                {
+                    "text": "按钮高级",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "buttonadv",
+                    "leaf": true
                 }
             ]
         },
