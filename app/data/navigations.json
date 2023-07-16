@@ -137,6 +137,12 @@
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "statedemo",
                     "leaf": true
+                },
+                {
+                    "text": "控制器进阶",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "controlleradv",
+                    "leaf": true
                 }
             ]
         },
