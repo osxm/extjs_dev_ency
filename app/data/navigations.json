@@ -44,6 +44,17 @@
                     "leaf": true
                 }
             ]
+        }, {
+            "text": "第4章 数据处理",
+            "iconCls": "x-fa fa-list-ul",
+            "expanded": false,
+            "selectable": false,
+            "children": [{
+                "text": "Ext Direct",
+                "iconCls": "x-fa fa-wifi",
+                "viewType": "extdirectdemo",
+                "leaf": true
+            }]
         },
         {
             "text": "第5章 高级页面组件",
@@ -76,6 +87,13 @@
                     "leaf": true
                 },
                 {
+                    "text": "4层级Grid",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "fourlayergrid",
+                    "leaf": true
+                },
+                
+                {
                     "text": "轻量树-treelist",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "treelistdemo",
@@ -91,6 +109,12 @@
                     "text": "按钮高级",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "buttonadv",
+                    "leaf": true
+                },
+                {
+                    "text": "Form and Field 高级",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "formfieldAdv",
                     "leaf": true
                 }
             ]
