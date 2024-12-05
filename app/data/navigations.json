@@ -44,17 +44,20 @@
                     "leaf": true
                 }
             ]
-        }, {
+        },
+        {
             "text": "第4章 数据处理",
             "iconCls": "x-fa fa-list-ul",
             "expanded": false,
             "selectable": false,
-            "children": [{
-                "text": "Ext Direct",
-                "iconCls": "x-fa fa-wifi",
-                "viewType": "extdirectdemo",
-                "leaf": true
-            }]
+            "children": [
+                {
+                    "text": "Ext Direct",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "extdirectdemo",
+                    "leaf": true
+                }
+            ]
         },
         {
             "text": "第5章 高级页面组件",
@@ -92,7 +95,12 @@
                     "viewType": "fourlayergrid",
                     "leaf": true
                 },
-                
+                {
+                    "text": "拖拽Grid",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "dragdropgridemo",
+                    "leaf": true
+                },
                 {
                     "text": "轻量树-treelist",
                     "iconCls": "x-fa fa-wifi",
@@ -109,12 +117,6 @@
                     "text": "按钮高级",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "buttonadv",
-                    "leaf": true
-                },
-                {
-                    "text": "Form and Field 高级",
-                    "iconCls": "x-fa fa-wifi",
-                    "viewType": "formfieldAdv",
                     "leaf": true
                 }
             ]
@@ -166,6 +168,20 @@
                     "text": "控制器进阶",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "controlleradv",
+                    "leaf": true
+                }
+            ]
+        },
+        {
+            "text": "第10章 最佳实践",
+            "iconCls": "x-fa fa-list-ul",
+            "expanded": false,
+            "selectable": false,
+            "children": [
+                {
+                    "text": "Search Grid",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "searchgrid",
                     "leaf": true
                 }
             ]
