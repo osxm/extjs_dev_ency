@@ -46,6 +46,26 @@
             ]
         },
         {
+            "text": "第4章 数据处理",
+            "iconCls": "x-fa fa-list-ul",
+            "expanded": false,
+            "selectable": false,
+            "children": [
+                {
+                    "text": "模拟后端数据",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "simletdemo",
+                    "leaf": true
+                },
+                {
+                    "text": "Ext Direct",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "extdirectdemo",
+                    "leaf": true
+                }
+            ]
+        },
+        {
             "text": "第5章 高级页面组件",
             "iconCls": "x-fa fa-list-ul",
             "expanded": false,
@@ -73,6 +93,18 @@
                     "text": "Grid进阶使用",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "gridadv",
+                    "leaf": true
+                },
+                {
+                    "text": "4层级Grid",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "fourlayergrid",
+                    "leaf": true
+                },
+                {
+                    "text": "拖拽Grid",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "dragdropgridemo",
                     "leaf": true
                 },
                 {
@@ -156,6 +188,20 @@
                     "text": "文件上传",
                     "iconCls": "x-fa fa-wifi",
                     "viewType": "fileuploadinteg",
+                    "leaf": true
+                }
+            ]
+        },
+        {
+            "text": "第10章 最佳实践",
+            "iconCls": "x-fa fa-list-ul",
+            "expanded": false,
+            "selectable": false,
+            "children": [
+                {
+                    "text": "Search Grid",
+                    "iconCls": "x-fa fa-wifi",
+                    "viewType": "searchgrid",
                     "leaf": true
                 }
             ]
